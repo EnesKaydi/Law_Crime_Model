@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files (çok büyük)
+*.csv
+wcld*.csv
+*.xlsx
+
+# Model files (çok büyük)
+*.pkl
+*.h5
+*.joblib
+
+# Output images (opsiyonel - istersen push edebilirsin)
+# outputs/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Backup files
+*_backup.py
