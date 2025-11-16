@@ -1,0 +1,33 @@
+prior_felony
+highest_severity
+is_recid_new
+pct_black
+pct_male
+pct_college
+pct_food_stamps
+pop_dens
+pct_somecollege
+med_hhinc
+year
+prior_charges_severity7
+prior_charges_severity10
+prior_charges_severity11
+prior_charges_severity12
+prior_charges_severity13
+prior_charges_severity14
+prior_charges_severity16
+prior_charges_severity20
+max_hist_jail
+median_hist_jail
+violent_crime
+race_American Indian or Alaskan Native
+race_Asian or Pacific Islander
+race_Caucasian
+race_Hispanic
+case_type_Felony
+case_type_Misdemeanor
+wcisclass_freq
+all_races_freq
+total_prior_crimes
+felony_ratio
+socioeconomic_score
