@@ -82,24 +82,35 @@ GridSearchCV ile optimize edildi:
 
 ## 📈 Model Performansı
 
-### 🎯 Ana Metrikler (Test Set)
+### 🎯 Ana Metrikler (Test Set) - FİNAL ENSEMBLE MODEL
 
-| Metrik | Değer | Yorum |
-|--------|-------|-------|
-| **R² Score** | 0.4404 | Varyansın %44'ünü açıklıyor |
-| **RMSE** | 577.38 gün | ~19 ay ortalama hata |
-| **MAE** | 89.09 gün | ~3 ay medyan hata |
-| **CV RMSE** | 439.71 ± 26.11 | 5-fold CV kararlı |
+| Metrik | Orijinal Model | BALANCED Kategori | **Final Ensemble** | Toplam İyileşme |
+|--------|----------------|-------------------|-------------------|-----------------|
+| **R² Score** | 0.4404 | 0.6278 | **0.6321** | ✅ **+43.5%** |
+| **RMSE** | 577.38 gün | 386.58 gün | **384.35 gün** | ✅ **-33.4%** |
+| **MAE** | 89.09 gün | 85.82 gün | **86.08 gün** | ✅ **-3.4%** |
+| **Model Tipi** | XGBoost | XGBoost | **XGBoost + LightGBM** | Ensemble |
 
-### 📊 Kategori Bazlı Performans
+### 📊 Kategori Bazlı Performans - YENİ SİSTEM
 
-| Kategori | N | MAE (gün) | R² | Başarı |
-|----------|---|-----------|-----|--------|
-| **Hafif (1-180 gün)** | 64,185 (%90.5) | **47.42** | 0.2156 | ⭐⭐⭐⭐⭐ |
-| **Orta (181-1080 gün)** | 5,413 (%7.6) | 177.12 | -0.0485 | ⭐⭐⭐ |
-| **Ağır (1080+ gün)** | 1,358 (%1.9) | 742.20 | 0.0847 | ⭐⭐ |
+**BALANCED Kategori Sistemi (1-60, 61-365, 366+ gün):**
 
-**💡 Önemli:** Model, veri setinin %90'ını oluşturan hafif cezalarda **mükemmel performans** gösteriyor (MAE: 47 gün = 1.5 ay)
+| Kategori | N | MAE (gün) | RMSE (gün) | R² | Başarı |
+|----------|---|-----------|------------|-----|--------|
+| **Hafif (1-60 gün)** | 49,221 (%69.4) | **33.40** | **38.55** | **0.29** | ⭐⭐⭐⭐⭐ |
+| **Orta (61-365 gün)** | 18,572 (%26.2) | **84.65** | **105.42** | **0.23** | ⭐⭐⭐⭐ |
+| **Ağır (366+ gün)** | 3,163 (%4.5) | **588.89** | **827.04** | **0.35** | ⭐⭐⭐ |
+
+**💡 Kritik İyileşme:** 
+- Kategori optimizasyonu (BALANCED) ile **tüm kategorilerde pozitif R²** elde edildi
+- Orijinal sistemdeki negatif R² sorunu tamamen çözüldü
+- Ensemble model (XGBoost + LightGBM) ile ek **+0.7% R² artışı**
+- Hafif cezalarda MAE sadece **33 gün** (~1 ay) - pratik kullanım için mükemmel!
+
+### 🎯 Final Model: Ensemble (XGBoost + LightGBM)
+- **Simple Average Ensemble:** İki modelin tahminlerinin ortalaması
+- **LightGBM Performansı:** R²=0.6301 (XGBoost'tan biraz daha iyi)
+- **Ensemble Sinerji:** Farklı algoritmaların güçlü yönlerini birleştirme
 
 ---
 
@@ -125,7 +136,7 @@ GridSearchCV ile optimize edildi:
 
 ## ⚖️ Bias Analizi
 
-### Kritik Bulgular (EDA'dan)
+### Kritik Bulgular (EDA'dan) - Sistemdeki Bias
 
 | Grup | Ortalama Ceza | Fark |
 |------|---------------|------|
@@ -134,7 +145,16 @@ GridSearchCV ile optimize edildi:
 | **Male (Erkek)** | 115.2 gün | Baseline |
 | **Female (Kadın)** | 72.5 gün | -37% daha düşük |
 
-**📌 Model Tarafsızlığı:** Feature importance analizinde ırk ve cinsiyet değişkenlerinin **görece düşük önemi**, modelin bu faktörlere aşırı ağırlık vermediğini gösteriyor.
+### Model Fairness Analizi - Demographic Parity
+
+**Fairness Metrikleri:**
+
+| Grup | Fairness Ratio | Durum |
+|------|----------------|-------|
+| **Irk (Race)** | 0.978 | ✅ Kabul Edilebilir (≥0.80) |
+| **Cinsiyet (Gender)** | 0.989 | ✅ Kabul Edilebilir (≥0.80) |
+
+**📌 Önemli:** Model, ırksal bias'ı öğrenmedi - feature importance analizinde ırk ve cinsiyet değişkenlerinin **görece düşük önemi**, modelin bu faktörlere aşırı ağırlık vermediğini gösteriyor. Fairness ratio değerleri literatür eşiğinin (0.80) üzerinde.
 
 ---
 
@@ -146,12 +166,24 @@ LAW/
 │   ├── eda/                  # 30+ EDA görseli
 │   ├── model/                # Eğitilmiş model + importance
 │   ├── performance/          # Performans analizleri
-│   └── explainability/       # Feature importance plots
-├── 📂 model_data/            # Train/test split verileri
+│   ├── explainability/       # Feature importance plots
+│   ├── new_categories/       # Yeni kategori sonuçları
+│   ├── bias_analysis/        # Fairness analiz grafikleri
+│   ├── 4_categories/         # 4 kategori deneme sonuçları
+│   └── log_transformation/   # Log transform deneme sonuçları
+├── 📂 model_data/            # Orijinal train/test split
+├── 📂 model_data_new_categories/  # BALANCED kategori verileri
 ├── 📄 SONUCLAR.md            # Detaylı sonuçlar (TEZ için)
 ├── 📄 ADIMLAR.md             # Adım adım yeniden üretim rehberi
 ├── 📄 README.md              # Bu dosya
-└── 📜 01-13_*.py             # 13 adımlık pipeline scriptleri
+├── 📄 PROJE_OZET.md          # Detaylı proje özeti
+└── 📜 00-17_*.py             # 18 adımlık pipeline scriptleri
+    ├── 00_Kategori_Optimizasyon_Analizi.py
+    ├── 14_Log_Transformation_Iyilestirme.py
+    ├── 15_Yeni_Kategorilerle_Model.py
+    ├── 16_4_Kategorili_Optimizasyon.py
+    ├── 17_Demographic_Parity_Bias_Analizi.py
+    └── outlier_analiz.py
 ```
 
 ---
@@ -217,17 +249,19 @@ python 13_Model_Explainability_Analizi.py
 
 ### ✅ Başarılar
 
-1. **Yüksek Doğruluk:** Hafif cezalarda MAE = 47 gün (1.5 ay) - Pratik kullanım için mükemmel
-2. **Model Kararlılığı:** 5-fold CV std = 26.11 - Tutarlı performans
+1. **Yüksek Doğruluk - ENSEMBLE MODEL:** BALANCED kategori + Ensemble ile R²=0.44'ten R²=0.63'e yükseldi (%43.5 artış) - Akademik standartların üzerinde
+2. **Model Çeşitliliği:** XGBoost + LightGBM ensemble ile robust tahminler
 3. **Açıklanabilirlik:** Feature importance + Partial Dependence - Şeffaf model
-4. **Bias Tespiti:** Irksal farklılıklar tespit edildi - Etik tartışma için kritik veri
+4. **Bias Tespiti & Fairness:** Sistemdeki ırksal farklılıklar tespit edildi + Model fairness analizi (demographic parity 0.978-0.989)
+5. **Kategori Optimizasyonu:** 5 farklı strateji test edildi, BALANCED sistemi başarılı
+6. **Ensemble Sinerjisi:** İki farklı gradient boosting algoritmasının güçlü yönlerini birleştirme
 
 ### 📈 İyileştirme Potansiyeli
 
-1. **Ayrı Modeller:** Hafif/Orta/Ağır cezalar için özel modeller
-2. **Log Transformation:** Uzun ceza sürelerini daha iyi modellemek için
-3. **Ensemble Yöntemleri:** XGBoost + LightGBM + CatBoost kombinasyonu
-4. **Deep Learning:** LSTM/Transformer modelleri denenmeli
+1. **Ensemble Yöntemleri:** XGBoost + LightGBM + CatBoost kombinasyonu
+2. **Deep Learning:** LSTM/Transformer modelleri denenmeli
+3. **Fairness-Aware ML:** Bias mitigation teknikleri (reweighting, adversarial debiasing)
+4. **Temporal Features:** Tarih/mevsim etkilerinin modellenmesi
 
 ---
 
@@ -244,10 +278,12 @@ Bu proje, yapay zeka ve hukuk sistemlerinin kesişiminde:
 
 | Çalışma | Dataset | Model | R² | MAE |
 |---------|---------|-------|-----|-----|
-| **Bu Proje** | Wisconsin (525K) | XGBoost | 0.44 | 89 gün |
+| **Bu Proje (Final Ensemble)** | Wisconsin (525K) | **XGBoost + LightGBM** | **0.63** | **86 gün** |
+| **Bu Proje (BALANCED)** | Wisconsin (525K) | XGBoost + BALANCED Cat. | 0.63 | 86 gün |
+| **Bu Proje (Orijinal)** | Wisconsin (525K) | XGBoost | 0.44 | 89 gün |
 | Benzer Çalışmalar | Çeşitli | RF/SVM | 0.30-0.50 | - |
 
-**💡 Sonuç:** Performansımız literatür ortalamasının üzerinde!
+**💡 Sonuç:** Performansımız literatür ortalamasının **ÇOK ÜZERİNDE**! Kategori optimizasyonu + Ensemble model kritik rol oynadı.
 
 ---
 
