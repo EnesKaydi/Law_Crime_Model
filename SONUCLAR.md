@@ -2212,3 +2212,161 @@ outputs/performance/
 4. **Outlier Etkisi:** En kötü tahminlerde büyük hatalar (10,000+ gün) görülüyor. Bu, çok uzun cezaların (10+ yıl) veri setinde nadir olması nedeniyle beklenen bir durumdur.
 
 ---
+
+## ADIM 6: FEATURE ENGINEERING VE ENCODING ✅
+
+**Tarih:** 2025-12-01 16:33:20
+
+
+### 📊 İşlem Özeti
+
+- **Orijinal boyut:** 493,741 satır × 54 kolon
+- **Final boyut:** 493,741 satır × 49 kolon
+- **Feature sayısı:** 47
+- **Hedef değişken:** 2 (jail, release)
+
+### 🔧 Yapılan İşlemler
+
+```
+1. ID kolonları çıkarıldı: ['new_id', 'judge_id', 'county', 'zip']
+2. Split kolonları çıkarıldı: ['train_test_split_caselevel', 'train_test_split_deflevel']
+3. Multicollinearity: probation çıkarıldı (r=1.000 with release)
+4. Multicollinearity: age_judge çıkarıldı (r=0.996 with age_offense)
+5. Multicollinearity: avg_hist_jail çıkarıldı (r=0.988 with median_hist_jail)
+6. Multicollinearity: min_hist_jail çıkarıldı (r=0.916 with avg_hist_jail)
+7. Hedef değişkenler ayrıldı: ['jail', 'release']
+8. Kategorik encoding tamamlandı: 5 değişken
+9. Eksik değerler median ile dolduruldu: 5 kolon
+10. Feature engineering tamamlandı: 6 yeni özellik
+11. Düşük korelasyonlu 5 özellik çıkarıldı
+```
+
+### 📋 Encoding Detayları
+
+**sex:**
+- Encoding Tipi: LabelEncoder
+- Sınıflar: ['F', 'M']
+
+**race:**
+- Encoding Tipi: OneHot
+- Oluşturulan dummy sayısı: 4
+
+**case_type:**
+- Encoding Tipi: OneHot
+- Oluşturulan dummy sayısı: 2
+
+**wcisclass:**
+- Encoding Tipi: FrequencyEncoding
+
+**all_races:**
+- Encoding Tipi: FrequencyEncoding
+
+### ⚙️ Yeni Oluşturulan Özellikler
+
+1. `total_prior_crimes`: Toplam suç geçmişi
+2. `felony_ratio`: Ağır suç oranı
+3. `age_group_young` / `age_group_old`: Yaş grubu binary
+4. `high_risk_score`: Şiddet + tekrar suç skoru
+5. `socioeconomic_score`: Mahalle sosyoekonomik skoru
+6. `wcisclass_freq` / `all_races_freq`: Frequency encoding
+
+### 💾 Kaydedilen Dosya
+
+- **Dosya:** `wcld_Processed_For_Model.csv`
+- **Boyut:** 177.48 MB
+- **Kullanım:** XGBoost model eğitimi için hazır
+
+### ✅ Önemli Notlar
+
+- ✅ Tüm kategorik değişkenler sayısal formata çevrildi
+- ✅ Multicollinearity temizlendi (VIF riski azaltıldı)
+- ✅ Eksik değerler yönetildi (median imputation)
+- ✅ Feature engineering ile 6 yeni özellik eklendi
+- ✅ Düşük korelasyonlu özellikler çıkarıldı
+- ✅ Veri model eğitimine hazır!
+
+---
+
+## ADIM 7: NORMALİZASYON VE TRAIN-TEST SPLIT ✅
+
+**Tarih:** 2025-12-01 16:33:34
+
+
+### 📊 Veri Seti Özeti
+
+- **Toplam veri:** 493,741 satır (jail>0 olanlar)
+- **Feature sayısı:** 41
+- **Hedef değişken:** 2 (jail, release)
+- **Çıkarılan kayıt:** 0 (jail=0 veya NaN)
+
+### 🔀 Train-Test Split
+
+```
+Train Set:
+  • X_train: 394,992 satır × 41 feature
+  • y_train: 394,992 satır × 2 target (+1 category)
+  • Oran: %80.0
+
+Test Set:
+  • X_test: 98,749 satır × 41 feature
+  • y_test: 98,749 satır × 2 target
+  • Oran: %20.0
+```
+
+### ⚙️ Normalizasyon
+
+- **Yöntem:** StandardScaler (sklearn)
+- **İşlem:** mean=0, std=1
+- **Normalize edilen kolon:** 41
+- **Scaler kaydedildi:** `model_data/scaler.pkl` (deployment için)
+
+### 🎯 Stratification (Class Imbalance Yönetimi)
+
+Ceza kategorilerine göre stratified split uygulandı:
+
+**Train Set:**
+```
+• Hafif: 286,384 (%72.50)
+• Orta: 76,238 (%19.30)
+• Agir: 32,370 (%8.20)
+```
+
+**Test Set:**
+```
+• Hafif: 71,597 (%72.50)
+• Orta: 19,060 (%19.30)
+• Agir: 8,092 (%8.19)
+```
+
+### 📊 Hedef Değişken İstatistikleri (Train)
+
+**jail (Hapis Süresi - Gün):**
+```
+• Ortalama: 365.61 gün
+• Median: 65.00 gün
+• Std Sapma: 1656.92 gün
+• Min: 0 gün
+• Max: 255500 gün
+```
+
+### 💾 Kaydedilen Dosyalar
+
+```
+model_data/
+  ├── X_train.csv (train features)
+  ├── X_test.csv (test features)
+  ├── y_train.csv (train targets)
+  ├── y_test.csv (test targets)
+  ├── scaler.pkl (StandardScaler objesi)
+  └── feature_names.txt (feature isimleri)
+```
+
+### ✅ Önemli Notlar
+
+- ✅ Veri normalize edildi (XGBoost için optimal)
+- ✅ Stratified split ile class imbalance dengelendi
+- ✅ Scaler kaydedildi (deployment'ta kullanılacak)
+- ✅ Feature names kaydedildi (model yorumlama için)
+- ✅ Train/test setleri hazır → Model eğitimine başlanabilir!
+
+---
