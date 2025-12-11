@@ -15,9 +15,9 @@ warnings.filterwarnings('ignore')
 plt.style.use('seaborn-v0_8-darkgrid')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/segmented_models")
+OUTPUT_DIR = Path("../outputs/segmented_models")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_segmented")
+MODEL_DIR = Path("../model_data_segmented")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def train_segmented_models():

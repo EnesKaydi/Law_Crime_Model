@@ -15,9 +15,9 @@ warnings.filterwarnings('ignore')
 plt.style.use('seaborn-v0_8-darkgrid')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/model_advanced_catboost")
+OUTPUT_DIR = Path("../outputs/model_advanced_catboost")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_advanced")
+MODEL_DIR = Path("../model_data_advanced")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def train_catboost_model():

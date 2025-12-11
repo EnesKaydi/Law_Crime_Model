@@ -19,9 +19,9 @@ sns.set_palette("husl")
 
 # Yollar
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/model_results_v1")
+OUTPUT_DIR = Path("../outputs/model_results_v1")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_v1")
+MODEL_DIR = Path("../model_data_v1")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def train_models():

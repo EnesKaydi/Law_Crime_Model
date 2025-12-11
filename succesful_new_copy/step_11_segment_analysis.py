@@ -15,10 +15,10 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-MODEL_PATH = Path("model_data_advanced/catboost_model.cbm")
-FEATURES_PATH = Path("model_data_advanced/features_list.pkl")
-CAT_FEATURES_PATH = Path("model_data_advanced/cat_features_list.pkl")
-OUTPUT_DIR = Path("outputs/segment_analysis")
+MODEL_PATH = Path("../model_data_advanced/catboost_model.cbm")
+FEATURES_PATH = Path("../model_data_advanced/features_list.pkl")
+CAT_FEATURES_PATH = Path("../model_data_advanced/cat_features_list.pkl")
+OUTPUT_DIR = Path("../outputs/segment_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def analyze_segments():

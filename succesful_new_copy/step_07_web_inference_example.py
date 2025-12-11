@@ -6,7 +6,7 @@ import joblib
 from pathlib import Path
 
 # Yollar
-MODEL_DIR = Path("model_data_advanced")
+MODEL_DIR = Path("../model_data_advanced")
 MODEL_PATH = MODEL_DIR / "catboost_model.cbm"
 FEATURES_PATH = MODEL_DIR / "features_list.pkl"
 CAT_FEATURES_PATH = MODEL_DIR / "cat_features_list.pkl"

@@ -14,7 +14,7 @@ warnings.filterwarnings('ignore')
 plt.style.use('seaborn-v0_8-darkgrid')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/clustering_analysis")
+OUTPUT_DIR = Path("../outputs/clustering_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def analyze_clustering():

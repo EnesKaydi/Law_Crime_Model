@@ -12,9 +12,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/retrain_interactions")
+OUTPUT_DIR = Path("../outputs/retrain_interactions")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_v2_interactions")
+MODEL_DIR = Path("../model_data_v2_interactions")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def create_interactions(df):

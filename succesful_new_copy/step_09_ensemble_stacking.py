@@ -16,9 +16,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/model_ensemble")
+OUTPUT_DIR = Path("../outputs/model_ensemble")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_ensemble")
+MODEL_DIR = Path("../model_data_ensemble")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def train_ensemble():

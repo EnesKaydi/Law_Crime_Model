@@ -12,7 +12,7 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/advanced_analysis")
+OUTPUT_DIR = Path("../outputs/advanced_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def analyze_missing_and_bias():

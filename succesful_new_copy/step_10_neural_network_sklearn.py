@@ -14,9 +14,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/model_deep_learning_sklearn")
+OUTPUT_DIR = Path("../outputs/model_deep_learning_sklearn")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_dl_sklearn")
+MODEL_DIR = Path("../model_data_dl_sklearn")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def train_sklearn_nn():

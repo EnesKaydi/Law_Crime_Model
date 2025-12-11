@@ -6,13 +6,13 @@ import joblib
 from pathlib import Path
 
 # Paths
-ROUTER_MODEL_PATH = Path("model_data_router/router_classifier.cbm")
-ROUTER_FEATURES_PATH = Path("model_data_router/router_features.pkl")
+ROUTER_MODEL_PATH = Path("../model_data_router/router_classifier.cbm")
+ROUTER_FEATURES_PATH = Path("../model_data_router/router_features.pkl")
 
-LOW_MODEL_PATH = Path("model_data_segmented/model_low_3000.cbm")
-HIGH_MODEL_PATH = Path("model_data_segmented/model_high_3000.cbm")
-SEG_FEATURES_PATH = Path("model_data_segmented/features_list.pkl")
-SEG_CAT_FEATURES_PATH = Path("model_data_segmented/cat_features_list.pkl")
+LOW_MODEL_PATH = Path("../model_data_segmented/model_low_3000.cbm")
+HIGH_MODEL_PATH = Path("../model_data_segmented/model_high_3000.cbm")
+SEG_FEATURES_PATH = Path("../model_data_segmented/features_list.pkl")
+SEG_CAT_FEATURES_PATH = Path("../model_data_segmented/cat_features_list.pkl")
 
 def load_system():
     print("⏳ AI Yargıç Sistemi Yükleniyor...")

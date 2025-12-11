@@ -14,9 +14,9 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-MODEL_PATH = Path("model_data_advanced/catboost_model.cbm")
-FEATURES_PATH = Path("model_data_advanced/features_list.pkl")
-OUTPUT_DIR = Path("outputs/optimization_analysis")
+MODEL_PATH = Path("../model_data_advanced/catboost_model.cbm")
+FEATURES_PATH = Path("../model_data_advanced/features_list.pkl")
+OUTPUT_DIR = Path("../outputs/optimization_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def analyze_new_features_and_errors():

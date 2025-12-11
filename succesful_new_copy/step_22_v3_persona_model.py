@@ -14,9 +14,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/v3_persona_model")
+OUTPUT_DIR = Path("../outputs/v3_persona_model")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_v3_persona")
+MODEL_DIR = Path("../model_data_v3_persona")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def create_interactions(df):

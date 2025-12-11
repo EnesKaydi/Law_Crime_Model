@@ -17,9 +17,9 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/model_results_optimized")
+OUTPUT_DIR = Path("../outputs/model_results_optimized")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_DIR = Path("model_data_optimized")
+MODEL_DIR = Path("../model_data_optimized")
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 def optimized_training():

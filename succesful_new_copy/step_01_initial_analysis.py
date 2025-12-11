@@ -13,7 +13,7 @@ sns.set_palette("husl")
 
 # Yollar
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-OUTPUT_DIR = Path("outputs/new_analysis_v1")
+OUTPUT_DIR = Path("../outputs/new_analysis_v1")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def analyze_and_filter():
