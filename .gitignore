@@ -39,3 +39,4 @@ wcld*.csv
 
 # Backup files
 *_backup.py
+wcld.csv
