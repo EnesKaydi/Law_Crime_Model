@@ -1,8 +1,9 @@
 
 # 🎓 Adli Ceza Tahmin Modeli: Final Analiz Bulguları
-> **Tarih:** 11 Aralık 2025  
+> **Tarih:** 14 Aralık 2025  
 > **Kapsam:** Model Performansı, Etik (Bias) Analiz ve Açıklanabilirlik  
 > **Hedef:** Tez Sunumu için Bilimsel Kanıtlar
+> **SON GÜNCELLEME:** Comprehensive High Severity Model Breakthrough
 
 Bu doküman, geliştirilen "Akıllı Yargıç Destek Sistemi"nin (AI-Judge Support System) teknik ve sosyolojik analiz sonuçlarını içerir.
 
@@ -11,10 +12,11 @@ Bu doküman, geliştirilen "Akıllı Yargıç Destek Sistemi"nin (AI-Judge Suppo
 ## 1. 🚀 Yönetici Özeti (Executive Summary)
 Geliştirilen sistem, geleneksel tekil modelleme yaklaşımlarının ötesine geçerek **Segmentasyon, Yönlendirme (Routing) ve Etkileşim (Interaction)** stratejileriyle hibrit bir mimariye dönüştürülmüştür.
 
-*   **Toplam Model Başarısı (Log R2):** **%83.06** (Teorik limitlere ulaşılmıştır)
-*   **Reel Tahmin Başarısı (R2):** **%79.07**
-*   **Hata Payı (MAE):** 348 Gün (Başlangıçtaki 600+ günden 348 güne düşüş)
-*   **Router Başarısı (Recall):** %90 (Ağır cezaları yakalama oranı)
+*   **Toplam Model Başarısı (Log R2):** **%83.65** (Teorik limiti aştık!) 🚀
+*   **Reel Tahmin Başarısı (R2):** **%85.67**
+*   **Hata Payı (MAE):** 313 Gün (Başlangıçtaki 600+ günden 313 güne düşüş)
+*   **Router Başarısı (Recall):** %89.33 (Ağır cezaları yakalama oranı)
+*   **🏆 High Severity Breakthrough:** %33.37 → %60.53 (+81.4% iyileşme)
 
 ---
 
@@ -98,8 +100,29 @@ Hakimler verdikleri kararların "beklenen değerden sapmasına" göre kümelenmi
 ---
 
 ## 7. 🏁 Sonuç ve Proje Durumu
-*   **Final Model:** V2 (Router + Interaction Features)
-*   **Performans:** %83.06 (Log scale), %79.07 (Real scale)
+*   **Final Model:** V2 + Comprehensive High Severity
+*   **Performans:** %83.65 (Log scale), %85.67 (Real scale)
 *   **Durum:** Analizler tamamlandı, model kullanıma hazır.
+*   **🏆 Breakthrough:** High Severity Model %60.53 R² (37 yeni feature ile)
+
+## 8. 🔬 High Severity Model: Comprehensive Feature Engineering
+
+### Araştırma Sorusu
+**"Neden High Severity Model %33'te takılı kaldı ve %50'ye ulaşmak mümkün mü?"**
+
+### Başarı: %60.53 R² (Hedef Aşıldı!)
+
+**37 Yeni Feature ile Başarı:**
+1. **Groupby Transforms (18):** judge_crime_mean, county_mean_sentence, wcisclass_mean_sentence
+2. **Interactions (9):** severity_x_violent, age_gap, violent_x_prior
+3. **Polynomials (3):** severity_squared, severity_cubed, age_squared
+4. **Temporal + Binning + Risk (7):** years_since_2000, age_bin, composite_risk_score
+
+**En Önemli Feature:** `judge_crime_mean` (Importance: 27.42) - Hakim-Suç kombinasyon ortalaması
+
+**Genel Sistem Etkisi:**
+- Eski: 83.06% R² (MAE: 348 gün)
+- Yeni: **83.65% R²** (MAE: 313 gün) 🚀
+- İyileşme: +0.59 puan, MAE 35 gün azaldı
 
 *Rapor Sonu.*

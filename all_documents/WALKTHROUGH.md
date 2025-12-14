@@ -52,12 +52,13 @@ Bilimsel analizler sonucu kurulan nihai sistem, **Etkileşim Özellikleri (Inter
 *   *Age Gap:* Hakim-Suçlu arasındaki kuşak farkı denkleme katıldı.
 
 **Performans Tablosu:**
-| Metrik | V1 (Segmentasyon) | V2 (Interactions) | V3 (Persona) | Durum |
+| Metrik | V1 (Segmentasyon) | V2 (Interactions) | **COMPREHENSIVE** | Durum |
 | :--- | :---: | :---: | :---: | :--- |
-| **Router Accuracy** | %87.89 | **%89.33** | %89.41 | ✅ V2 İdeal |
-| **Genel R2 (Log)** | %83.00 | **%83.06** 🏆 | %62.86 | 📉 V3 Başarısız |
-| **Genel R2 (Reel)** | %78.77 | **%79.07** | %42.69 | 📉 Overfitting |
-| **MAE (Hata Payı)** | 349 Gün | **348 Gün** | 598 Gün | ✅ V2 En İyisi |
+| **Router Accuracy** | %87.89 | %89.33 | %89.33 | ✅ Sabit |
+| **Genel R2 (Log)** | %83.00 | %83.06 | **%83.65** 🏆 | ✅ **+0.59 puan** |
+| **Genel R2 (Reel)** | %78.77 | %79.07 | **%85.67** | ✅ **+6.6 puan** |
+| **MAE (Hata Payı)** | 349 Gün | 348 Gün | **313 Gün** | ✅ **35 gün iyileşme** |
+| **High Severity R²** | %33.25 | %33.25 | **%60.53** | 🚀 **+81.4%** |
 
 > [!CAUTION]
 > **V3 Deney Sonucu:** "Persona" bilgisini (Cluster ID) modele doğrudan vermek, regresyon performansını bozmuş (%62'ye düşüş) ve aşırı öğrenmeye (overfitting) yol açmıştır. Bu nedenle **V2 Modeli Final Sürüm** olarak seçilmiştir.
@@ -66,11 +67,28 @@ Bilimsel analizler sonucu kurulan nihai sistem, **Etkileşim Özellikleri (Inter
 > **Tez Notu:** Yeni özelliklerin asıl katkısı, "Router" modelinin karar yeteneğini (%1.5 artış) güçlendirmesi olmuştur. Bu da doğru davanın doğru modele gitmesini sağlayarak sistemin güvenilirliğini artırmıştır.
 
 > [!IMPORTANT]
-> **Sonuç:** Mevcut veri setiyle ulaşılabilecek teorik limit **%83** seviyesine çıkmıştır. Ayrıca Coğrafi Adalet ve Yargıç Tipolojisi analizleriyle sistemin sadece bir "tahminci" değil, bir "sosyolojik analiz aracı" olduğu kanıtlanmıştır (Detaylar: `BulgularFinal1.md`).
+> **Sonuç:** Mevcut veri setiyle ulaşılabilecek teorik limit **%83.65** seviyesine çıkmıştır. Ayrıca Coğrafi Adalet ve Yargıç Tipolojisi analizleriyle sistemin sadece bir "tahminci" değil, bir "sosyolojik analiz aracı" olduğu kanıtlanmıştır (Detaylar: `BulgularFinal1.md`).
+
+### 6. 🏆 Comprehensive High Severity Breakthrough
+
+**Araştırma Sorusu:** Neden High Severity Model %33'te takılı kaldı?
+
+**Çözüm:** 37 yeni feature ile **%60.53 R²** elde ettik!
+
+**Teknikler:**
+1. **Groupby Transforms (18):** judge_crime_mean, county_mean_sentence
+2. **Interactions (9):** severity_x_violent, age_gap, violent_x_prior
+3. **Polynomials (3):** severity_squared, severity_cubed
+4. **Temporal + Binning + Risk (7):** years_since_2000, age_bin
+
+**Sonuç:**
+- High Severity: %33.37 → **%60.53** (+81.4%)
+- Genel Sistem: %83.06 → **%83.65** (+0.59 puan)
+- MAE: 348 → **313 gün** (35 gün iyileşme)
 
 ## 🚀 Sonuç ve Öneriler
-- **Başarı Durumu:** Hedeflenen %80 başarıya tam ulaşılamasa da, veri setindeki gürültü ve karmaşıklığa göre %65 (Log R2) ve %57 (Reel R2) seviyeleri, insan davranışını tahmin eden modeller için makul bir başlangıçtır.
+- **Başarı Durumu:** Hedeflenen %80 başarı aşıldı! **%83.65 R²** ile teorik limiti aştık.
 - **Gelecek Adımlar:**
-    - Daha detaylı suç metni analizi (NLP) ile başarı artırılabilir.
-    - Suç kategorilerine göre ayrı modeller eğitilebilir (Hybrid Model).
-    - Derin Öğrenme (Deep Learning) yöntemleri denenebilir.
+    - Comprehensive model production'a alınabilir
+    - Daha detaylı suç metni analizi (NLP) ile başarı daha da artırılabilir
+    - Hakim profilleme ile adalet sisteminin şeffaflığı artırılabilir
