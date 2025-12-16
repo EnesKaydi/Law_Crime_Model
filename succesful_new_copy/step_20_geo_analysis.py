@@ -13,8 +13,8 @@ warnings.filterwarnings('ignore')
 plt.style.use('seaborn-v0_8-darkgrid')
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-MODEL_DIR = Path("../model_data_v2_interactions")
-OUTPUT_DIR = Path("../outputs/geo_analysis")
+MODEL_DIR = Path("model_data_v2_interactions")
+OUTPUT_DIR = Path("outputs/geo_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def analyze_geo_justice():

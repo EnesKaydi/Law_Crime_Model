@@ -1,0 +1,64 @@
+
+KRİTİK KARARLAR - ÖZET RAPOR
+================================================================================
+
+✅ KARAR 1: jail = 0 OLANLARI ATMA!
+   • Mahkeme ceza vermemiş olabilir (probation, para cezası)
+   • Model '0 gün ceza' durumunu öğrenmeli
+   • jail = 0 → 1 yapmak VERİYİ BOZAR!
+   
+   📌 UYGULAMA: jail = 0 olanları TUTACAĞIZ!
+
+---
+
+✅ KARAR 2: judge_id (Yargıç) KOLONUNU KULLAN!
+   • Yargıçlar arası büyük fark var
+   • Model hangi yargıcın nasıl ceza verdiğini öğrenmeli
+   • %100 tam dolu (eksik yok)
+   
+   📌 UYGULAMA: judge_id KULLANILACAK!
+
+---
+
+✅ KARAR 3: GEÇMİŞ CEZA KOLONLARINI KULLAN!
+   • jail ile korelasyon var (önemli)
+   • Topluma kazandırma çalışması için kritik!
+   • %19 eksik → 0 ile doldurulacak (geçmiş ceza yok anlamında)
+   
+   📌 UYGULAMA: max_hist_jail, min_hist_jail, avg_hist_jail KULLANILACAK!
+
+---
+
+✅ KARAR 4: 100 YILDAN FAZLA CEZALARI AT!
+   • 100 yıl = 36,500 gün eşiği
+   • Çok az sayıda (<%0.01)
+   • Muhtemelen hata veya müebbet (700 yıl gerçekçi değil)
+   
+   📌 UYGULAMA: jail > 36,500 gün olanları ATACAĞIZ!
+
+---
+
+✅ KARAR 5: PROBATION KOLONUNU KULLAN!
+   • %30 eksik AMA jail ile ilişkisi var
+   • Probation alanlar daha az ceza alıyor
+   • Eksikleri 0 ile doldurulacak (probation yok anlamında)
+   
+   📌 UYGULAMA: probation KULLANILACAK, eksikler = 0!
+
+================================================================================
+
+📁 KAYDEDILEN DOSYALAR:
+  • outputs/01_detayli_analiz/tum_kolonlar_korelasyon_analizi.csv
+  • outputs/01_detayli_analiz/judge_analizi.png
+
+================================================================================
+
+✅ ANALİZ TAMAMLANDI!
+
+🎯 SONRAKI ADIM:
+  ADIM 2: Veri Temizleme ve Feature Engineering
+  - jail = 0 olanları TUT
+  - jail > 36,500 gün olanları AT
+  - Geçmiş ceza kolonlarını 0 ile doldur
+  - probation kolonunu 0 ile doldur
+  - Log transformation uygula

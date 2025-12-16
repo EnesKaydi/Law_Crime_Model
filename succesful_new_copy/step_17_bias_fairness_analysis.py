@@ -14,8 +14,8 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("colorblind")
 
 VERI_YOLU = "/Users/muhammedeneskaydi/PycharmProjects/LAW/wcld.csv"
-MODEL_DIR = Path("../model_data_v2_interactions")
-OUTPUT_DIR = Path("../outputs/bias_analysis")
+MODEL_DIR = Path("model_data_v2_interactions")
+OUTPUT_DIR = Path("outputs/bias_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def load_models_and_features():

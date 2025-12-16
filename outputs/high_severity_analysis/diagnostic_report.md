@@ -159,5 +159,5 @@ Mevcut veri ve feature'larla **teorik R² üst limiti ~%40-45** civarında.
 ---
 
 **Hazırlayan:** Antigravity AI  
-**Tarih:** 2025-12-14  
+**Tarih:** 2025-12-15  
 **Versiyon:** 1.0
