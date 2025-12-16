@@ -2,7 +2,7 @@
 
 ## Wisconsin Ceza Mahkemesi Veri Seti ile Ceza Süresi Tahmin Modeli
 
-[![Python](https://img.shields.io/badge/Python-3.12.6-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![CatBoost](https://img.shields.io/badge/CatBoost-V2_Final-green.svg)](https://catboost.ai/)
 [![R2 Score](https://img.shields.io/badge/R²-83.06%25-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-Academic-yellow.svg)]()
@@ -85,7 +85,7 @@ Train (85K) / Test (21K) - %80/%20 Split
 
 ---
 
-## 📈 Model Performansı
+## 📈 Model Performansı (GÜNCEL - 16.12.2025)
 
 ### 🎯 Ana Metrikler (Test Set) - FİNAL V2 MODEL
 
@@ -208,7 +208,7 @@ LAW/
 ### 1️⃣ Gereksinimler
 
 ```bash
-Python 3.12.6
+Python 3.11
 pandas, numpy, matplotlib, seaborn
 scikit-learn, catboost, shap
 ```
@@ -221,7 +221,7 @@ git clone https://github.com/EnesKaydi/Law_Crime_Model.git
 cd Law_Crime_Model
 
 # Virtual environment oluştur
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate  # macOS/Linux
 # .venv\\Scripts\\activate   # Windows
 
