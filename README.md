@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![CatBoost](https://img.shields.io/badge/CatBoost-V2_Final-green.svg)](https://catboost.ai/)
-[![R2 Score](https://img.shields.io/badge/R²-83.06%25-brightgreen.svg)]()
+[![R2 Score](https://img.shields.io/badge/R²-83.65%25-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-Academic-yellow.svg)]()
 
 ---
@@ -18,7 +18,7 @@ Bu proje, **Manisa Celal Bayar Üniversitesi** lisans tez çalışması kapsamı
 1. **Hakim Destek Sistemi:** Ceza kararlarında veri odaklı öneriler sunmak
 2. **Adalet Sistemi Şeffaflığı:** Model kararlarının açıklanabilir olması
 3. **Bias Analizi:** Irksal ve demografik önyargıların tespit edilmesi
-4. **Yüksek Doğruluk:** %80+ model performansı hedefi ✅ **BAŞARILDI (%83.06)**
+4. **Yüksek Doğruluk:** %80+ model performansı hedefi ✅ **BAŞARILDI (%83.65)**
 
 ---
 
@@ -87,14 +87,14 @@ Train (85K) / Test (21K) - %80/%20 Split
 
 ## 📈 Model Performansı (GÜNCEL - 16.12.2025)
 
-### 🎯 Ana Metrikler (Test Set) - FİNAL V2 MODEL
+### 🎯 Ana Metrikler (Test Set) - FİNAL V2.1 (Comprehensive)
 
-| Metrik | V1 (Segmentasyon) | **V2 (Interactions)** | V3 (Persona) | Durum |
-|--------|-------------------|-----------------------|--------------|-------|
-| **Router Accuracy** | %87.89 | **%89.33** | %89.41 | ✅ V2 İdeal |
-| **Genel R² (Log)** | %83.00 | **%83.06** 🏆 | %62.86 | 📉 V3 Başarısız |
-| **Genel R² (Reel)** | %78.77 | **%79.07** | %42.69 | 📉 Overfitting |
-| **MAE (Hata Payı)** | 349 Gün | **348 Gün** | 598 Gün | ✅ V2 En İyisi |
+| Metrik | V1 (Segmentasyon) | V2 (Interactions) | **V2.1 (Breakthrough)** | Durum |
+|--------|-------------------|-------------------|-------------------------|-------|
+| **Router Accuracy** | %87.89 | %89.33 | **%89.33** | ✅ Stabil |
+| **Genel R² (Log)** | %83.00 | %83.06 | **%83.65** 🚀 | 🏆 Yeni Rekor |
+| **Genel R² (Reel)** | %78.77 | %79.07 | **%85.67** | � Büyük Artış |
+| **MAE (Hata Payı)** | 349 Gün | 348 Gün | **313 Gün** | 📉 %10 Düşüş |
 
 ### 📊 Segment Bazlı Performans
 
@@ -104,14 +104,15 @@ Train (85K) / Test (21K) - %80/%20 Split
 - **Kapsam:** %95 vaka
 
 **High Severity Model (3000+ gün):**
-- **R² Score:** 0.3325
-- **MAE:** ~450 gün
+- **R² Score:** 60.53% (Eski: %33) 🚀
+- **MAE:** 399 Gün (Eski: 450)
 - **Kapsam:** %5 vaka
+- **Başarı:** 37 Yeni Feature ile %81 iyileşme sağlandı!
 
 **💡 Kritik İyileşme:** 
-- Segmentasyon stratejisi ile **%83.06 R² başarısı** (Teorik limit!)
-- Interaction features ile Router performansı **%1.5 arttı**
-- V3 Persona denemesi başarısız oldu (overfitting), **V2 Final Model seçildi**
+- **High Severity Breakthrough:** Ağır suç tahminlerinde %33'ten **%60.53** seviyesine çıkıldı.
+- Genel R² başarısı **%83.65** ile teorik limite ulaştı.
+- MAE **313 güne** düşürülerek hata payı minimize edildi.
 
 ---
 
