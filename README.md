@@ -3,8 +3,9 @@
 ## Wisconsin Ceza Mahkemesi Veri Seti ile Ceza Süresi Tahmin Modeli
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
-[![CatBoost](https://img.shields.io/badge/CatBoost-V2_Final-green.svg)](https://catboost.ai/)
-[![R2 Score](https://img.shields.io/badge/R²-83.65%25-brightgreen.svg)]()
+[![CatBoost+LightGBM](https://img.shields.io/badge/CatBoost+LightGBM-V3_Final-green.svg)](https://catboost.ai/)
+[![R2 Teorik](https://img.shields.io/badge/R²_Teorik-83.65%25-brightgreen.svg)]()
+[![R2 Pratik](https://img.shields.io/badge/R²_Pratik-74.06%25-blue.svg)]()
 [![License](https://img.shields.io/badge/License-Academic-yellow.svg)]()
 
 ---
@@ -266,21 +267,39 @@ print(f"Tahmin: {predicted_days:.0f} gün")
 
 ## 📊 Sonuçlar ve Değerlendirme
 
-### ✅ Başarılar
+### 🏆 Teorik Başarılar (Kusursuz Router Varsayımıyla)
 
-1. **Rekor Doğruluk:** R²=0.8306 (Log scale) - Teorik limite ulaşıldı! 🏆
-2. **Hibrit Mimari:** Router + Segmentasyon + Interaction Features
-3. **Açıklanabilirlik:** SHAP analizi ile modelin "neden" karar verdiği görselleştirildi
-4. **Bias Tespiti:** Sistemdeki ırksal, coğrafi ve hakim bazlı adaletsizlikler tespit edildi
-5. **Sosyolojik Analiz:** Suçlu Profilleri, Coğrafi Adalet Haritası, Hakim Tipolojisi
-6. **Bilimsel Dürüstlük:** V3 Persona denemesi başarısız oldu, şeffaf şekilde raporlandı
+| # | Başarı | Değer |
+|---|--------|-------|
+| 1 | **Teorik R² (Log)** | **%83.65** — literatür ortalamasının (%30-65) çok üstünde |
+| 2 | **Teorik MAE** | **313 gün** |
+| 3 | **Mainstream Ensemble R²** | **%70.96** (CatBoost %60 + LightGBM %40 blend) |
+| 4 | **High Severity R²** | **%61.35** (başlangıçtaki %33'ten neredeyse iki katına çıktı) |
+| 5 | **Loss Fonk. Kanıtı** | RMSE, bu veri için istatistiksel olarak optimal seçim kanıtlandı |
 
-### 📈 İyileştirme Potansiyeli
+### 🌍 Pratik Başarılar (Router Hataları Dahil, Gerçek Dünya)
 
-1. **Deep Learning:** LSTM/Transformer modelleri denenmeli
-2. **Fairness-Aware ML:** Bias mitigation teknikleri (reweighting, adversarial debiasing)
-3. **Temporal Features:** Tarih/mevsim etkilerinin modellenmesi
-4. **NLP Integration:** Dava metinlerinin doğal dil işleme ile analizi
+| # | Başarı | Değer |
+|---|--------|-------|
+| 1 | **Gerçek Dünya R²** | **%74.06** — Router yanılmalarıyla birlikte ölçüldü |
+| 2 | **Gerçek Dünya MAE** | **443 gün** |
+| 3 | **Router Precision** | **%60** — threshold kalibrasyonuyla "paranoyak" hatalar azaltıldı |
+| 4 | **Router Recall** | **%69** — ağır suçların büyük çoğunluğu yakalanıyor |
+| 5 | **Hakim Bias Düzeltmesi** | Sisteme otomatik **+51 gün** sertlik düzeltmesi eklendi |
+
+### ✅ Diğer Başarılar
+
+- **MoE Mimarisi:** Mixture of Experts — Router + 2 Uzman Model (akademik özgünlük)
+- **Açıklanabilirlik:** SHAP analizi ile her kararın "neden" verildiği görselleştirildi
+- **Bias Tespiti:** Irksal, coğrafi ve hakim bazlı adaletsizlikler tespit ve raporlandı
+- **Bilimsel Dürüstlük:** Teorik ve pratik performans farkı şeffaf biçimde ayrı ayrı sunuldu
+
+### 📈 Gelecek Çalışmalar
+
+1. **NLP Integration:** Dava metinlerinin BERT/RoBERTa ile analizi
+2. **Fairness-Aware ML:** Bias mitigation (reweighting, adversarial debiasing)
+3. **Deep Learning:** LSTM/Transformer ile zamansal örüntü öğrenimi
+4. **Real-Time API:** Flask/FastAPI ile canlı inference servisi
 
 ---
 
@@ -288,20 +307,21 @@ print(f"Tahmin: {predicted_days:.0f} gün")
 
 Bu proje, yapay zeka ve hukuk sistemlerinin kesişiminde:
 
-- ✅ **Teknolojik:** CatBoost + Router mimarisi ile hibrit sistem
-- ✅ **Metodolojik:** SHAP, Clustering, Geo-Analysis ile çok katmanlı analiz
-- ✅ **Etik:** Bias detection ve fairness analizi (Conditional Bias keşfi)
-- ✅ **Pratik:** Hakim destek sistemi için kullanıma hazır prototip
+- ✅ **Teknolojik:** CatBoost + LightGBM Ensemble + Router (Mixture of Experts)
+- ✅ **Metodolojik:** Optuna, SHAP, Clustering, Geo-Analysis ile çok katmanlı analiz
+- ✅ **Etik:** Bias detection, fairness analizi ve hakim sertlik skoru tespiti
+- ✅ **Pratik:** Hakim destek sistemi için kullanıma hazır prototip (step_38)
 
 ### 📖 Literatür ile Karşılaştırma
 
-| Çalışma | Dataset | Model | R² | MAE |
-|---------|---------|-------|-----|-----|
-| **Bu Proje (V2 Final)** | Wisconsin (106K) | **CatBoost Hibrit** | **0.83** | **348 gün** |
-| **Bu Proje (V1)** | Wisconsin (106K) | CatBoost Segmented | 0.83 | 349 gün |
-| Benzer Çalışmalar | Çeşitli | RF/SVM/XGBoost | 0.30-0.65 | - |
+| Çalışma | Dataset | Model | R² Teorik | R² Pratik | MAE |
+|---------|---------|-------|-----------|-----------|-----|
+| **Bu Proje (V3 Final)** | Wisconsin (106K) | **CatBoost+LightGBM MoE** | **%83.65** | **%74.06** | **313 / 443 gün** |
+| Bu Proje (V2) | Wisconsin (106K) | CatBoost Hibrit | %83.06 | — | 348 gün |
+| Bu Proje (V1) | Wisconsin (106K) | CatBoost Segmented | %83.00 | — | 349 gün |
+| Benzer Çalışmalar | Çeşitli | RF/SVM/XGBoost | %30–65 | — | — |
 
-**💡 Sonuç:** Performansımız literatür ortalamasının **ÇOK ÜZERİNDE**! Hibrit mimari ve interaction features kritik rol oynadı.
+**💡 Sonuç:** V3 Final sistemi teorik **%83.65**, gerçek dünya **%74.06** R² ile literatür ortalamasının çok üzerindedir. Pratik ve teorik fark bilimsel dürüstlükle ayrı ayrı raporlanmıştır.
 
 ---
 
@@ -340,4 +360,4 @@ GitHub: [@EnesKaydi](https://github.com/EnesKaydi)
 
 ---
 
-*Son Güncelleme: 16 Aralık 2025 - V2 Final Model*
+*Son Güncelleme: 4 Mart 2026 - V3 Final Model (Optuna + Ensemble + Hakim Bias Düzeltmesi)*
