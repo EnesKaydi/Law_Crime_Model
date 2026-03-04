@@ -85,34 +85,37 @@ Train (85K) / Test (21K) - %80/%20 Split
 
 ---
 
-## 📈 Model Performansı (GÜNCEL - 16.12.2025)
+## 📈 Model Performansı (GÜNCEL — V3 Final)
 
-### 🎯 Ana Metrikler (Test Set) - FİNAL V2.1 (Comprehensive)
+Sistem performansı iki farklı bakış açısıyla analiz edilmiştir.
 
-| Metrik | V1 (Segmentasyon) | V2 (Interactions) | **V2.1 (Breakthrough)** | Durum |
-|--------|-------------------|-------------------|-------------------------|-------|
-| **Router Accuracy** | %87.89 | %89.33 | **%89.33** | ✅ Stabil |
-| **Genel R² (Log)** | %83.00 | %83.06 | **%83.65** 🚀 | 🏆 Yeni Rekor |
-| **Genel R² (Reel)** | %78.77 | %79.07 | **%85.67** | � Büyük Artış |
-| **MAE (Hata Payı)** | 349 Gün | 348 Gün | **313 Gün** | 📉 %10 Düşüş |
+### 🎭 1. Gerçek Dünya — Uçtan Uca Test (Router Hataları Dahil)
 
-### 📊 Segment Bazlı Performans
+| Metrik | Değer | Not |
+|--------|-------|-----|
+| **Router Precision** | **%60** | Threshold + class weights ile kalibrasyon yapıldı |
+| **Router Recall** | **%69** | Ağır suçların büyük çoğunluğu yakalanıyor |
+| **Uçtan Uca R² (Log)** | **%74.06** | Tüm sistemin gerçek senaryodaki başarısı |
+| **Uçtan Uca MAE** | **443 Gün** | Router hata payı dahil |
 
-**Mainstream Model (300-3000 gün):**
-- **R² Score:** 0.7043
-- **MAE:** ~280 gün
-- **Kapsam:** %95 vaka
+### 🎯 2. Teorik Laboratuvar Performansı (Segment Bazlı Maksimumlar)
 
-**High Severity Model (3000+ gün):**
-- **R² Score:** 60.53% (Eski: %33) 🚀
-- **MAE:** 399 Gün (Eski: 450)
-- **Kapsam:** %5 vaka
-- **Başarı:** 37 Yeni Feature ile %81 iyileşme sağlandı!
+| Metrik | V1 | V2 | **V3 (Final)** |
+|--------|----|----|----------------|
+| **Genel R² (Log)** | %83.00 | %83.06 | **%83.65** 🚀 |
+| **Genel R² (Reel)** | %78.77 | %79.07 | **%85.67** |
+| **MAE** | 349 gün | 348 gün | **313 gün** 📉 |
 
-**💡 Kritik İyileşme:** 
-- **High Severity Breakthrough:** Ağır suç tahminlerinde %33'ten **%60.53** seviyesine çıkıldı.
-- Genel R² başarısı **%83.65** ile teorik limite ulaştı.
-- MAE **313 güne** düşürülerek hata payı minimize edildi.
+### 📊 Segment Modelleri — Teorik Pik Skorlar
+
+| Segment | Yöntem | R² (Log) | MAE |
+|---------|--------|----------|-----|
+| **Mainstream** (300-3000 gün, %95 vaka) | CatBoost + LightGBM **Ensemble** | **%70.96** | 238 gün |
+| **High Severity** (3000+ gün, %5 vaka) | CatBoost + Optuna (100 deneme) | **%61.35** | 1210 gün |
+
+> 💡 **Ensemble Bulgusu:** CatBoost (%60) + LightGBM (%40) ağırlıklı blend, tek modele kıyasla +0.32 puan teorik R² artışı sağladı (step_37).
+
+> 🔬 **Teorik Limit:** Loss fonksiyonu karşılaştırması (RMSE/MAE/MAPE/Quantile) yapılmış; RMSE mevcut veri seti için en optimal seçim olduğu kanıtlanmıştır (step_36).
 
 ---
 
@@ -193,7 +196,16 @@ LAW/
 │   ├── step_18_shap_explanation.py           # SHAP
 │   ├── step_19_clustering_analysis.py        # Clustering
 │   ├── step_20_geo_analysis.py               # Geo-Analysis
-│   └── step_21_judge_typology.py             # Judge Profiling
+│   ├── step_21_judge_typology.py             # Judge Profiling
+│   ├── step_30_router_optimization.py        # Router Optuna (100 trial)
+│   ├── step_31_mainstream_optimization.py    # Mainstream Optuna (100 trial)
+│   ├── step_32_high_severity_optimization.py # High Severity Optuna (100 trial)
+│   ├── step_33_optimized_system_test.py      # Uçtan Uca Gerçek Test
+│   ├── step_34_router_precision_opt.py       # Router Precision Kalibrasyonu
+│   ├── step_35_high_severity_subsegment.py   # Alt Segment Deneyi
+│   ├── step_36_quantile_regression.py        # Loss Fn Karşılaştırması
+│   ├── step_37_ensemble_blending.py          # CatBoost+LightGBM Ensemble
+│   └── step_38_judge_bias_modulation.py      # Hakim Bias Modülasyonu
 ├── 📂 all_documents/                # Tez Raporları
 │   ├── BULGULAR_FINAL.md            # Tez Bulguları (Detaylı)
 │   ├── WALKTHROUGH.md               # Teknik Özet
