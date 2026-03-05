@@ -1,0 +1,450 @@
+{
+  "hırsızlık": {
+    "keywords_tr": [
+      "hırsızlık",
+      "çalmak",
+      "çaldı",
+      "gasp",
+      "gaspetmek",
+      "zimmetine geçirmek",
+      "çalmak",
+      "çaldı",
+      "market",
+      "dükkân",
+      "dükkan",
+      "araba",
+      "otomobil",
+      "ev",
+      "işyeri",
+      "mağaza",
+      "para",
+      "eşya",
+      "ürün",
+      "değerli eşya"
+    ],
+    "keywords_en": [
+      "theft",
+      "stole",
+      "steal",
+      "stealing",
+      "shoplifting",
+      "store",
+      "car",
+      "home",
+      "house",
+      "shop",
+      "money",
+      "goods",
+      "items"
+    ],
+    "suç_id": 1,
+    "severity_range": [
+      4,
+      6
+    ],
+    "priority": 4
+  },
+  "bina içi hırsızlık": {
+    "keywords_tr": [
+      "bina",
+      "dükkan",
+      "işyeri",
+      "girmek",
+      "izinsiz",
+      "evden",
+      "işyerinden",
+      "kırarak girdi",
+      "kapı kırma"
+    ],
+    "keywords_en": [
+      "burglary",
+      "breaking",
+      "entering",
+      "building",
+      "premises"
+    ],
+    "suç_id": 2,
+    "severity_range": [
+      5,
+      7
+    ],
+    "priority": 6
+  },
+  "yaralama": {
+    "keywords_tr": [
+      "yaralamak",
+      "yaralama",
+      "yaraladi",
+      "yaraladi",
+      "dovmek",
+      "dovdu",
+      "dovmustur",
+      "darp",
+      "fiziksel temas",
+      "yumruk",
+      "tekme",
+      "tokat",
+      "bicakla",
+      "bicakla yaralama",
+      "doverek",
+      "sokakta dovme",
+      "saldirmak",
+      "vurmak"
+    ],
+    "keywords_en": [
+      "battery",
+      "beat",
+      "hit",
+      "strike",
+      "attack",
+      "injure",
+      "harm",
+      "physical",
+      "stabbing",
+      "knife attack"
+    ],
+    "suç_id": 3,
+    "severity_range": [
+      6,
+      9
+    ],
+    "priority": 6
+  },
+  "saldırı": {
+    "keywords_tr": [
+      "saldırmak",
+      "bıçaklamak",
+      "silahsız saldırı",
+      "tehdit",
+      "zarar vermek"
+    ],
+    "keywords_en": [
+      "assault",
+      "attack",
+      "threat",
+      "threaten"
+    ],
+    "suç_id": 4,
+    "severity_range": [
+      5,
+      7
+    ],
+    "priority": 5
+  },
+  "silahlı soygun": {
+    "keywords_tr": [
+      "silahla soygun yapti",
+      "silahla soygun",
+      "silahla banka soygunu",
+      "silahla banka",
+      "silah ile soygun",
+      "silah zorla para aldi",
+      "silahla tehdit etti zorla",
+      "silahla tehdit para",
+      "silahla bankaya",
+      "silahla gasp",
+      "silahli soygun",
+      "silahli",
+      "soygun yapti",
+      "banka soygunu",
+      "silahla tehdit"
+    ],
+    "keywords_en": [
+      "armed robbery",
+      "armed bank robbery",
+      "bank robbery with weapon",
+      "robbery with weapon",
+      "robbery with gun"
+    ],
+    "suç_id": 5,
+    "severity_range": [
+      9,
+      10
+    ],
+    "priority": 10
+  },
+  "yağma": {
+    "keywords_tr": [
+      "yağma",
+      "soygun yaptı",
+      "zorla para aldı",
+      "gasbetti",
+      "yağma yaptı",
+      "soygun"
+    ],
+    "keywords_en": [
+      "robbery",
+      "snatching",
+      "force",
+      "take away",
+      "robbery with force"
+    ],
+    "suç_id": 6,
+    "severity_range": [
+      7,
+      9
+    ],
+    "priority": 7
+  },
+  "uyuşturucu bulundurma": {
+    "keywords_tr": [
+      "uyuşturucu",
+      "hap",
+      "eroin",
+      "esrar",
+      "kokain",
+      "bonza",
+      "sentetik",
+      "madde",
+      "bulundurmak",
+      "saklamak",
+      "kişisel kullanım"
+    ],
+    "keywords_en": [
+      "drug",
+      "possession",
+      "drugs",
+      "heroin",
+      "cannabis",
+      "cocaine",
+      "marijuana",
+      "weed",
+      "substance",
+      "personal use"
+    ],
+    "suç_id": 7,
+    "severity_range": [
+      3,
+      5
+    ],
+    "priority": 5
+  },
+  "uyuşturucu satışı": {
+    "keywords_tr": [
+      "uyuşturucu satmak",
+      "uyuşturucu ticareti",
+      "uyuşturucu pazarlama",
+      "uyuşturucu dağıtmak",
+      "uyuşturucu nakletmek",
+      "uyuşturucu satış"
+    ],
+    "keywords_en": [
+      "drug sale",
+      "drug sell",
+      "drug trafficking",
+      "drug distribution",
+      "drug dealing"
+    ],
+    "suç_id": 8,
+    "severity_range": [
+      7,
+      10
+    ],
+    "priority": 8
+  },
+  "silah bulundurma": {
+    "keywords_tr": [
+      "silah bulundurma",
+      "silah yakalandı",
+      "üzerinde silah",
+      "silahla yakalandı",
+      "yasadışı silah",
+      "silah taşıma",
+      "ruhsatsız silah"
+    ],
+    "keywords_en": [
+      "weapon possession",
+      "illegal weapon",
+      "gun found",
+      "found with weapon"
+    ],
+    "suç_id": 9,
+    "severity_range": [
+      5,
+      7
+    ],
+    "priority": 7
+  },
+  "kasten öldürme": {
+    "keywords_tr": [
+      "öldürmek",
+      "öldürme",
+      "cinayet",
+      "kasten öldürme",
+      "öldürülmek",
+      "birini öldürme",
+      "öldürdü",
+      "canını aldı",
+      "hayatını sonlandırma"
+    ],
+    "keywords_en": [
+      "murder",
+      "kill",
+      "killed",
+      "homicide",
+      "death",
+      "dead",
+      "murdered"
+    ],
+    "suç_id": 10,
+    "severity_range": [
+      10,
+      10
+    ],
+    "priority": 10
+  },
+  "cinsel saldırı": {
+    "keywords_tr": [
+      "cinsel saldırı",
+      "tecavüz",
+      "cinsel zorla",
+      "cinsel istismar",
+      "cinsel taciz"
+    ],
+    "keywords_en": [
+      "rape",
+      "sexual assault",
+      "molest",
+      "sexual abuse"
+    ],
+    "suç_id": 11,
+    "severity_range": [
+      9,
+      10
+    ],
+    "priority": 10
+  },
+  "çocuk istismarı": {
+    "keywords_tr": [
+      "çocuk istismar",
+      "çocuğa dövmek",
+      "çocuğa fiziksel şiddet",
+      "çocuğa cinsel istismar",
+      "çocuğa zarar"
+    ],
+    "keywords_en": [
+      "child abuse",
+      "child molest",
+      "harm child"
+    ],
+    "suç_id": 12,
+    "severity_range": [
+      8,
+      10
+    ],
+    "priority": 10
+  },
+  "dolandırıcılık": {
+    "keywords_tr": [
+      "dolandırmak",
+      "dolandırıcılık",
+      "aldatmak",
+      "sahtekârlık",
+      "kandırmak",
+      "sahte vurgun"
+    ],
+    "keywords_en": [
+      "fraud",
+      "scam",
+      "deceive",
+      "cheat",
+      "trick",
+      "swindle"
+    ],
+    "suç_id": 13,
+    "severity_range": [
+      3,
+      5
+    ],
+    "priority": 5
+  },
+  "sahtecilik": {
+    "keywords_tr": [
+      "sahte belge",
+      "sahte imza",
+      "sahtecilik",
+      "evrak sahtecilik",
+      "belgede sahtecilik",
+      "çek sahtecilik",
+      "senet sahtecilik",
+      "resmi evrak"
+    ],
+    "keywords_en": [
+      "forgery",
+      "forge",
+      "forged document",
+      "fake document",
+      "fake signature"
+    ],
+    "suç_id": 14,
+    "severity_range": [
+      3,
+      5
+    ],
+    "priority": 5
+  },
+  "tehdid": {
+    "keywords_tr": [
+      "tehdit etmek",
+      "korkutmak",
+      "tehdit mektubu",
+      "ölümle tehdit"
+    ],
+    "keywords_en": [
+      "threat",
+      "threaten",
+      "intimidate",
+      "frighten"
+    ],
+    "suç_id": 15,
+    "severity_range": [
+      3,
+      5
+    ],
+    "priority": 4
+  },
+  "alkollü araç kullanma": {
+    "keywords_tr": [
+      "alkol",
+      "alkollü",
+      "sarhoş",
+      "içkili",
+      "direksiyon",
+      "trafik kazası",
+      "alkollü araba"
+    ],
+    "keywords_en": [
+      "drunk driving",
+      "drunk",
+      "alcohol",
+      "drink drive",
+      "car accident intoxicated"
+    ],
+    "suç_id": 18,
+    "severity_range": [
+      3,
+      5
+    ],
+    "priority": 5
+  },
+  "polise direnme": {
+    "keywords_tr": [
+      "polise direnme",
+      "görevliye direnme",
+      "memura direnme",
+      "görevliye karşı koyma",
+      "görevli zorluk"
+    ],
+    "keywords_en": [
+      "resist police",
+      "resist officer",
+      "resisting authority"
+    ],
+    "suç_id": 19,
+    "severity_range": [
+      3,
+      5
+    ],
+    "priority": 5
+  }
+}
